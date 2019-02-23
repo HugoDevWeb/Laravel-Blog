@@ -35,7 +35,7 @@ class PostController extends Controller
 
     public function detail($id)
     {
-        $post =Post::with("getComment")->find($id);
+        $post =Post::with("getComments")->find($id);
 
         return view('post.post_detail')->with([
             'post' => $post,

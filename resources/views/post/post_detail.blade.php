@@ -41,7 +41,9 @@
                     <button type="submit" class="btn btn-primary">Create comment</button>
                     <a href="{{ action('PostController@index') }}" class="btn btn-primary">Back to posts</a>
                 </form>
-
+                
+                {{--// TODO ICI FOREACH DANS TOUT LES COMMENTAIRES DU POSTS VIA $post->getComments--}}
+                {{--{{ dd($post->getComments) }}--}}
 
             </main>
         </div>
