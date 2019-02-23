@@ -10,24 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-
+    
     public function storeComment(Request $request, $id)
     {
-        $post =Post::with("getComments")->find($id);
-
+        $post = Post::find($id);
+        if (!$post) {
+            return redirect()->back();
+        }
         $comment = Comment::create([
-            'name' => Auth::user()->name,
+            'name'    => Auth::user()->name,
             'comment' => $request->comment,
             'post_id' => $post->id,
         ]);
-
-
-      return redirect()->action('PostController@detail', $id)->with([
-          'post' => $post,
-          'comment' => $comment,
-      ]);
-
+        
+        
+        return redirect()->action('PostController@detail', $id)->with([
+            'post'    => $post,
+            'comment' => $comment,
+        ]);
+        
     }
-
-
+    
+    
 }
