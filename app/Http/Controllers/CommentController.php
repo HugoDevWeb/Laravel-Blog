@@ -13,7 +13,7 @@ class CommentController extends Controller
 
     public function storeComment(Request $request, $id)
     {
-        $post =Post::with("getComment")->find($id);
+        $post =Post::with("getComments")->find($id);
 
         $comment = Comment::create([
             'name' => Auth::user()->name,
@@ -21,7 +21,7 @@ class CommentController extends Controller
             'post_id' => $post->id,
         ]);
 
-        
+
       return redirect()->action('PostController@detail', $id)->with([
           'post' => $post,
           'comment' => $comment,

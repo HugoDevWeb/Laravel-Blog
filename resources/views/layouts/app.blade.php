@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+
     <style>
         html, body {
             background-color: #fff;
@@ -73,6 +74,11 @@
 
         img{
             max-width: 600px;
+        }
+
+        #h2commentaire{
+            margin-top: 80px;
+            margin-bottom: 35px;
         }
     </style>
 </head>

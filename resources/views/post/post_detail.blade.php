@@ -26,7 +26,21 @@
                         <button type="button" class="btn btn-danger btn-sm">Delete Post</button>
                     </a>
                 @endif
+                <h2 class="text-center" id="h2commentaire">Commentaires</h2>
+                <table class="table table-hover mt-2">
 
+                    @if($post->id)
+                        @foreach($post->getComments as $comment)
+                            <tr>
+                                <th>{{ $loop->iteration }}</th>
+                                <td>{{ $comment->name }}</td>
+                                <td>{{ $comment->comment }}</td>
+                                <td>{{ Carbon\Carbon::parse($comment->created_at)->format('d-m-Y')  }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
+
+                </table>
 
 
                 <form method="post" action="{{ action('CommentController@storeComment', $post->id) }}" class="mt-5">
