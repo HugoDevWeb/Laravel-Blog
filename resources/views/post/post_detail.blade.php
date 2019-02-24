@@ -29,8 +29,8 @@
                 <h2 class="text-center" id="h2commentaire">Commentaires</h2>
                 <table class="table table-hover mt-2">
 
-                    @if($post->id)
-                        @foreach($post->getComments as $comment)
+                        @if($post->validatedCom === 1)
+                        @foreach($post->validatedCom as $comment)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $comment->name }}</td>
@@ -38,7 +38,9 @@
                                 <td>{{ Carbon\Carbon::parse($comment->created_at)->format('d-m-Y')  }}</td>
                             </tr>
                         @endforeach
-                    @endif
+                            @else
+                            <p class="text-center">Il n'y a pas encore de commentaires sur ce post..</p>
+                            @endif
 
                 </table>
 
@@ -49,15 +51,13 @@
                     <div class="form-group">
                         <label for="comment">Comment</label>
                         <textarea class="form-control" id="id_comment" rows="3" name="comment"
-                                  placeholder="Comment"></textarea>
+                                      placeholder="Comment"></textarea>
 
                     </div>
                     <button type="submit" class="btn btn-primary">Create comment</button>
                     <a href="{{ action('PostController@index') }}" class="btn btn-primary">Back to posts</a>
                 </form>
-                
-                {{--// TODO ICI FOREACH DANS TOUT LES COMMENTAIRES DU POSTS VIA $post->getComments--}}
-                {{--{{ dd($post->getComments) }}--}}
+
 
             </main>
         </div>

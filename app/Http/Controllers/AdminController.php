@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,5 +67,16 @@ class AdminController extends Controller
         $posts = Post::find($id);
         $posts->delete();
         return redirect()->route('admin.post_index');
+    }
+
+    public function validateComment($idComm, $idPost)
+    {
+      $post = Post::where('id', $idPost)->first();
+
+      $comm = Comment::where('id', $idComm)->first();
+      $comm->validated = 1;
+      $comm->save();
+
+      return redirect()->back();
     }
 }

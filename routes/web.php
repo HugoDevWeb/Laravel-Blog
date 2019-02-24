@@ -43,11 +43,14 @@ Route::post('/admin/post-index/create', 'AdminController@adminStoreFormPost')->n
 
 Route::get('/admin/post/detail/{id}', 'AdminController@postDetail')->name('admin.post_detail');
 
+Route::post('/admin/post/detail/{id}', 'AdminController@validateComment')->name('admin.post_detail');
+
 Route::get('/admin/post/edit/{id}', 'AdminController@postEdit')->name('admin.post_edit');
 
 Route::post('/admin/post/edit/{id}', 'AdminController@postUpdate')->name('admin.post_update');
 
 Route::get('/admin/post/delete/{id}', 'AdminController@destroy')->name('admin.destroy');
+
 
 
 
