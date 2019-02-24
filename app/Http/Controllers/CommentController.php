@@ -17,13 +17,17 @@ class CommentController extends Controller
         if (!$post) {
             return redirect()->back();
         }
+
+
         $comment = Comment::create([
             'name'    => Auth::user()->name,
             'comment' => $request->comment,
             'post_id' => $post->id,
+
         ]);
-        
-        
+
+
+
         return redirect()->action('PostController@detail', $id)->with([
             'post'    => $post,
             'comment' => $comment,

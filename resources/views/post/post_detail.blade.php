@@ -28,7 +28,18 @@
                 @endif
                 <h2 class="text-center" id="h2commentaire">Commentaires</h2>
                 <table class="table table-hover mt-2">
+
+
+
                     @if($post->validatedCom->isNotEmpty())
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Author</th>
+                            <th>Comment</th>
+                            <th>Created at</th>
+                        </tr>
+                        </thead>
                         @foreach($post->validatedCom as $comment)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
