@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(Auth::user()->is_admin)
     <div class="container-fluid">
         <div class="row">
             <nav class="col-sm-3 col-md-2  d-sm-block bg-light sidebar">
@@ -39,4 +40,7 @@
             </main>
         </div>
     </div>
+    @else
+        <h2 class="text-danger text-center mt-5">Vous n'avez pas accès à cet epsace</h2>
+    @endif
 @endsection

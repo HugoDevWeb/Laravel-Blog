@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (Auth::user()->is_admin)
     <div class="container-fluid">
         <div class="row">
             <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
@@ -75,7 +76,7 @@
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $comment->name }}</td>
-                                <td>{{ $comment->comment }}</td>
+                                <td class="container">{{ $comment->comment }}</td>
                                 <td>{{ Carbon\Carbon::parse($comment->created_at)->format('d-m-Y')  }}</td>
                                 <td><a class="btn btn-primary text-light"
                                        href="{{ action('AdminController@validateComment', [$post->id, $comment->id ]) }}">Validate
@@ -92,11 +93,6 @@
 
 
 
-
-
-
-                
-
                 <form method="post" action="{{ action('AdminController@storeComment', $post->id) }}" class="mt-5">
                     {{ csrf_field() }}
 
@@ -112,4 +108,8 @@
             </main>
         </div>
     </div>
+
+    @else
+        <h2 class="text-danger text-center mt-5">Vous n'avez pas accès à cet epsace</h2>
+    @endif
 @endsection
