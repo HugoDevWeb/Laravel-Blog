@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(Auth::user()->is_admin)
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -26,9 +26,5 @@
             </div>
         </div>
     </div>
-    @else
-        <h2 class="text-danger text-center mt-5">Vous n'avez pas accès à cet epsace</h2>
-    @endif
-
 
 @endsection()

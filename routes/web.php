@@ -12,6 +12,8 @@
 */
 
 
+use App\Http\Middleware\Admin;
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -31,27 +33,31 @@ Route::post('/post/edit/{id}', 'PostController@update')->name('post.update');
 Route::get('/post/delete/{id}', 'PostController@destroy')->name('post.delete');
 
 
+Route::prefix('admin')->middleware(Admin::class)->group(function () {
+
+    Route::get('', 'AdminController@index')->name('admin.index');
+
+    Route::get('/post-index', 'AdminController@postIndex')->name('admin.post_index');
+
+    Route::get('/post-index/create', 'AdminController@adminFormPost')->name('admin.post_form');
+
+    Route::post('/post-index/create', 'AdminController@adminStoreFormPost')->name('admin.post_form');
+
+    Route::get('/post/detail/{id}', 'AdminController@postDetail')->name('admin.post_detail');
+
+    Route::post('/post/detail/{id}', 'AdminController@storeComment')->name('admin.post_detail');
+
+    Route::get('/post/detail/{idPost}/comment/{idComm}/validate', 'AdminController@validateComment')->name('admin.post_detail');
+
+    Route::get('/post/edit/{id}', 'AdminController@postEdit')->name('admin.post_edit');
+
+    Route::post('/post/edit/{id}', 'AdminController@postUpdate')->name('admin.post_update');
+
+    Route::get('/post/delete/{id}', 'AdminController@destroy')->name('admin.destroy');
+
+});
 
 
-Route::get('/admin', 'AdminController@index')->name('admin.index');
-
-Route::get('/admin/post-index', 'AdminController@postIndex')->name('admin.post_index');
-
-Route::get('/admin/post-index/create', 'AdminController@adminFormPost')->name('admin.post_form');
-
-Route::post('/admin/post-index/create', 'AdminController@adminStoreFormPost')->name('admin.post_form');
-
-Route::get('/admin/post/detail/{id}', 'AdminController@postDetail')->name('admin.post_detail');
-
-Route::post('/admin/post/detail/{id}', 'AdminController@storeComment')->name('admin.post_detail');
-
-Route::get('/admin/post/detail/{idPost}/comment/{idComm}/validate', 'AdminController@validateComment')->name('admin.post_detail');
-
-Route::get('/admin/post/edit/{id}', 'AdminController@postEdit')->name('admin.post_edit');
-
-Route::post('/admin/post/edit/{id}', 'AdminController@postUpdate')->name('admin.post_update');
-
-Route::get('/admin/post/delete/{id}', 'AdminController@destroy')->name('admin.destroy');
 
 
 
