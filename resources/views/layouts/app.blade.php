@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @include('flashy::message')
 
 
     <style>
@@ -83,6 +84,7 @@
     </style>
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -140,8 +142,11 @@
         </nav>
 
         <main class="py-4">
+
             @yield('content')
         </main>
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@include('flashy::message')
 </html>

@@ -169,6 +169,8 @@ return [
         /*
          * Application Service Providers...
          */
+        MercurySeries\Flashy\FlashyServiceProvider::class,
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -223,6 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
 
     ],
 

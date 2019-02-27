@@ -16,7 +16,7 @@
                 <a href="{{ action('PostController@getFormPost') }}" class="btn btn-primary mb-4 mt-3">
                     Create Post
                 </a>
-                <table class="table table-striped table-hover">
+                <table class="table  table-hover">
                     <thead>
                     <tr>
                         <th>#</th>

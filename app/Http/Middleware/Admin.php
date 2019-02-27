@@ -20,6 +20,7 @@ class Admin
             return $next($request);
         }
         else
+            flashy()->error("Vous n'avez pas accès cet espace");
             return redirect()->action('PostController@index');
 
     }

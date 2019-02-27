@@ -17,19 +17,22 @@
                     <form method="post" action="{{ action('PostController@storeFormPost') }}">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="name">Title</label>
-                            <input type="text" class="form-control" id="id_title" name="title"
-                                   aria-describedby="title" placeholder="Enter title">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : ''  }}" id="id_title" name="title"
+                                   aria-describedby="title" placeholder="Enter title" value="{{ old('title') }}">
+                            {!! $errors->first('title', '<span class="invalid-feedback">:message</span>')  !!}
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea class="form-control" id="id_description" rows="3" name="description"
-                                      placeholder="Description"></textarea>
+                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : ''  }}" id="id_description" rows="3" name="description"
+                                      placeholder="Description">{{ old('description') }}</textarea>
+                            {!! $errors->first('description', '<span class="invalid-feedback">:message</span>')  !!}
                         </div>
                         <div class="form-group">
                             <lable for="image">Url de l'image</lable>
-                            <input type="text" class="form-control" id="id_image" name="image"
-                                   aria-describedby="image" placeholder="Please enter your url's picture">
+                            <input type="text" class="form-control {{ $errors->has('image') ? 'is-invalid' : ''  }}" id="id_image" name="image"
+                                   aria-describedby="image" placeholder="Please enter your url's picture" value="{{ old('image') }}">
+                            {!! $errors->first('image', '<span class="invalid-feedback">:message</span>')  !!}
 
                         </div>
                         <button type="submit" class="btn btn-primary">Create post</button>

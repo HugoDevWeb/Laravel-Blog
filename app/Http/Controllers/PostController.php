@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,13 +23,14 @@ class PostController extends Controller
         return view('post.post_form');
     }
 
-    public function storeFormPost(Request $request)
+    public function storeFormPost(PostRequest $request)
     {
         $posts = Post::create(['title' => $request->title,
             'description' => $request->description,
             'image' => $request->image,
             'author_id'=>Auth::user()->id,
             ]);
+        flashy()->success('Votre post a été crée avec succès !');
         return redirect(route('post.index', $posts));
 
     }

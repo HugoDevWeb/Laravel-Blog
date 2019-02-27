@@ -35,7 +35,7 @@ class AdminController extends Controller
             'image' => $request->image,
             'author_id' => Auth::user()->id,
         ]);
-
+        flashy()->success('Votre post a été crée avec succès !');
         return redirect(route('admin.post_index', $posts));
     }
 
@@ -65,6 +65,7 @@ class AdminController extends Controller
         $post->image = $request->image;
         $post->save();
 
+        flashy()->success('Le post a bien été modifié !');
         return redirect()->route('admin.post_index');
     }
 
@@ -73,6 +74,7 @@ class AdminController extends Controller
         $posts = Post::find($id);
         $posts->delete();
 
+        flashy()->success('Le post a bien été supprimé !');
         return redirect()->route('admin.post_index');
     }
 
@@ -83,7 +85,7 @@ class AdminController extends Controller
         $comm->validated = 1;
         $comm->save();
 
-
+        flashy()->success('Le commentaire a bien été validé !');
         return redirect()->action('AdminController@postDetail', $post->id);
     }
 
@@ -102,7 +104,7 @@ class AdminController extends Controller
             'validated' => 1,
         ]);
 
-
+        flashy()->success('Votre commentaire a été crée avec succès !');
         return redirect()->action('AdminController@postDetail', $id)->with([
             'post' => $post,
             'comment' => $comment,

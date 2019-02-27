@@ -54,10 +54,21 @@
                 </table>
 
 
+                <form method="post" action="{{ action('AdminController@storeComment', $post->id) }}" class="mt-5">
+                    {{ csrf_field() }}
+
+                    <div class="form-group">
+                        <label for="comment">Comment</label>
+                        <textarea class="form-control" id="id_comment" rows="3" name="comment"
+                                  placeholder="Comment"></textarea>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create comment</button>
+                    <a href="{{ action('PostController@index') }}" class="btn btn-primary">Back to posts</a>
+                </form>
 
 
-
-                <h2 class="text-center" id="h2commentaire">Valider les commentaires</h2>
+                <h2 class="text-center" id="h2commentaire">Commentaires à valider</h2>
                 <table class="table table-hover mt-2">
 
 
@@ -90,21 +101,6 @@
                     @endif
 
                 </table>
-
-
-
-                <form method="post" action="{{ action('AdminController@storeComment', $post->id) }}" class="mt-5">
-                    {{ csrf_field() }}
-
-                    <div class="form-group">
-                        <label for="comment">Comment</label>
-                        <textarea class="form-control" id="id_comment" rows="3" name="comment"
-                                  placeholder="Comment"></textarea>
-
-                    </div>
-                    <button type="submit" class="btn btn-primary">Create comment</button>
-                    <a href="{{ action('PostController@index') }}" class="btn btn-primary">Back to posts</a>
-                </form>
             </main>
         </div>
     </div>
