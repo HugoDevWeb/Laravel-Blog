@@ -18,11 +18,11 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image');
-            $table->integer('author_id');
+            $table->integer('author_id')->unsigned()->nullable()->reference('id')->on('users');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

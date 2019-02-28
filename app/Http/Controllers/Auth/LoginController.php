@@ -19,18 +19,24 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+    
     use AuthenticatesUsers;
-
+    
+    public function showLoginForm()
+    {
+        return view('app.entities.auth.login');
+    }
+    
     protected function authenticated(Request $request, $user)
     {
-        if (Auth::user()->is_admin){
+        if (Auth::user()->is_admin) {
             return redirect()->action('AdminController@index');
         }
-        return  redirect('/');
+        
+        return redirect('/');
     }
-
-
+    
+    
     /**
      * Create a new controller instance.
      *

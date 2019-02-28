@@ -16,13 +16,13 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->is_admin) {
+        if ($request->user()->is_admin) {
             return $next($request);
-        }
-        else
+        } else
             flashy()->error("Vous n'avez pas accès cet espace");
-            return redirect()->action('PostController@index');
-
+        
+        return redirect()->back();
+        
     }
-
+    
 }

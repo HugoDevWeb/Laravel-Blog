@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->truncate();
         $user = new User();
-        $user->name='Hugo';
-        $user->is_admin=1;
-        $user->email='hugo.lavergne@devinci.fr';
+        $user->name = 'Hugo';
+        $user->is_admin = 1;
+        $user->email = 'hugo.lavergne@devinci.fr';
         $user->password = bcrypt('password');
         $user->save();
     }
